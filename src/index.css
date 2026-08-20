@@ -1,0 +1,489 @@
+/* ============================
+   TravelMate Custom Styles
+   ============================ */
+
+:root {
+  --tm-primary: #0d6efd;
+  --tm-primary-rgb: 13, 110, 253;
+  --tm-bg: #f4f7fb;
+  --tm-card-bg: #ffffff;
+  --tm-text: #1a2332;
+  --tm-text-muted: #6c7a92;
+  --tm-border: #e2e8f0;
+  --tm-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --tm-shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.12);
+  --tm-radius: 14px;
+  --tm-nav-bg: rgba(255, 255, 255, 0.92);
+  --tm-accent: #00a896;
+}
+
+[data-bs-theme="dark"] {
+  --tm-bg: #0f1623;
+  --tm-card-bg: #1a2332;
+  --tm-text: #e2e8f0;
+  --tm-text-muted: #94a3b8;
+  --tm-border: #2d3a4e;
+  --tm-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  --tm-shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.4);
+  --tm-nav-bg: rgba(15, 22, 35, 0.92);
+  --tm-accent: #2dd4bf;
+}
+
+body {
+  background-color: var(--tm-bg);
+  color: var(--tm-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ============================ Navbar ============================ */
+.tm-navbar {
+  background-color: var(--tm-nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--tm-border);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+  z-index: 1030;
+}
+
+.tm-brand-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--tm-primary), var(--tm-accent));
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.tm-brand-text {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--tm-text);
+  line-height: 1.1;
+}
+.tm-brand-text small {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--tm-text-muted);
+}
+
+.tm-nav-link {
+  font-weight: 500;
+  color: var(--tm-text-muted) !important;
+  border-radius: 8px;
+  padding: 0.4rem 0.85rem !important;
+  transition: all 0.2s ease;
+}
+.tm-nav-link:hover {
+  color: var(--tm-primary) !important;
+  background-color: rgba(var(--tm-primary-rgb), 0.08);
+}
+.tm-nav-link.active {
+  color: var(--tm-primary) !important;
+  background-color: rgba(var(--tm-primary-rgb), 0.12);
+  font-weight: 600;
+}
+
+.navbar-toggler {
+  border-color: var(--tm-border);
+}
+
+/* ============================ Main ============================ */
+.tm-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 140px);
+}
+
+/* ============================ Cards ============================ */
+.card {
+  background-color: var(--tm-card-bg);
+  border: 1px solid var(--tm-border);
+  border-radius: var(--tm-radius);
+  box-shadow: var(--tm-shadow);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.card-header {
+  background-color: transparent;
+  border-bottom: 1px solid var(--tm-border);
+  font-size: 0.9rem;
+}
+
+.card-footer {
+  background-color: transparent;
+  border-top: 1px solid var(--tm-border);
+}
+
+/* ============================ Dashboard Stat Cards ============================ */
+.tm-stat-card {
+  border-radius: var(--tm-radius);
+}
+.tm-stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+.tm-variant-primary { background: rgba(13, 110, 253, 0.12); color: #0d6efd; }
+.tm-variant-info { background: rgba(13, 202, 240, 0.12); color: #0dcaf0; }
+.tm-variant-success { background: rgba(25, 135, 84, 0.12); color: #198754; }
+.tm-variant-warning { background: rgba(255, 193, 7, 0.12); color: #ffc107; }
+.tm-variant-danger { background: rgba(220, 53, 69, 0.12); color: #dc3545; }
+
+[data-bs-theme="dark"] .tm-variant-primary { background: rgba(13, 110, 253, 0.2); }
+[data-bs-theme="dark"] .tm-variant-info { background: rgba(13, 202, 240, 0.2); }
+[data-bs-theme="dark"] .tm-variant-success { background: rgba(25, 135, 84, 0.2); }
+[data-bs-theme="dark"] .tm-variant-warning { background: rgba(255, 193, 7, 0.2); }
+[data-bs-theme="dark"] .tm-variant-danger { background: rgba(220, 53, 69, 0.2); }
+
+.tm-stat-label {
+  font-size: 0.78rem;
+  color: var(--tm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.tm-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.tm-stat-sub {
+  font-size: 0.78rem;
+  color: var(--tm-text-muted);
+}
+
+/* Mini stat cards */
+.tm-stat-mini {
+  border-radius: var(--tm-radius);
+}
+.tm-stat-mini .card-body {
+  padding: 1rem;
+}
+.tm-stat-mini svg {
+  font-size: 1.3rem;
+}
+
+/* ============================ Trip Cards ============================ */
+.tm-trip-card {
+  border-radius: var(--tm-radius);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tm-trip-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--tm-shadow-hover);
+}
+
+/* ============================ Destination Cards ============================ */
+.tm-destination-card {
+  border-radius: var(--tm-radius);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tm-destination-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--tm-shadow-hover);
+}
+.tm-destination-img-wrap {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+.tm-destination-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.tm-destination-card:hover .tm-destination-img-wrap img {
+  transform: scale(1.06);
+}
+.tm-destination-cost {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  font-size: 0.75rem;
+}
+.tm-attraction-badge {
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+/* ============================ Progress Bars ============================ */
+.tm-progress {
+  height: 7px;
+  border-radius: 6px;
+  background-color: var(--tm-border);
+}
+
+/* ============================ Search Bar ============================ */
+.tm-search .input-group-text {
+  color: var(--tm-text-muted);
+  border-color: var(--tm-border);
+}
+.tm-search .form-control {
+  border-color: var(--tm-border);
+}
+.tm-search .form-control:focus {
+  box-shadow: none;
+  border-color: var(--tm-primary);
+}
+
+/* ============================ Filter Controls ============================ */
+.tm-filter-group .btn {
+  font-size: 0.82rem;
+}
+.tm-sort-select {
+  width: auto !important;
+  min-width: 160px;
+}
+
+/* ============================ Countdown ============================ */
+.tm-countdown {
+  background: linear-gradient(135deg, rgba(var(--tm-primary-rgb), 0.08), rgba(0, 168, 150, 0.08));
+  border: 1px solid rgba(var(--tm-primary-rgb), 0.15);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+.tm-countdown-label {
+  font-size: 0.8rem;
+  color: var(--tm-text-muted);
+  margin-bottom: 0.5rem;
+}
+.tm-countdown-grid {
+  display: flex;
+  gap: 1rem;
+}
+.tm-countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+.tm-countdown-num {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--tm-primary);
+  line-height: 1;
+}
+.tm-countdown-unit-label {
+  font-size: 0.7rem;
+  color: var(--tm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.2rem;
+}
+.tm-countdown-past {
+  color: var(--tm-text-muted);
+}
+
+/* ============================ Next Trip Card ============================ */
+.tm-next-trip {
+  border: 1px solid rgba(var(--tm-primary-rgb), 0.2);
+}
+
+/* ============================ Timeline ============================ */
+.tm-timeline {
+  position: relative;
+  padding-left: 1.5rem;
+}
+.tm-timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--tm-border);
+}
+.tm-timeline-date {
+  font-weight: 600;
+  color: var(--tm-primary);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px dashed var(--tm-border);
+  position: relative;
+}
+.tm-timeline-item {
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+.tm-timeline-dot {
+  position: absolute;
+  left: -1.5rem;
+  top: 18px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--tm-card-bg);
+  border: 3px solid var(--tm-primary);
+  z-index: 1;
+}
+.tm-timeline-item.completed .tm-timeline-dot {
+  background: var(--tm-primary);
+}
+.tm-timeline-card {
+  border-radius: 10px !important;
+  box-shadow: var(--tm-shadow) !important;
+}
+.tm-timeline-item.completed .tm-timeline-card {
+  opacity: 0.75;
+}
+
+/* ============================ Tables ============================ */
+.tm-table {
+  margin-bottom: 0;
+}
+.tm-table thead th {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--tm-text-muted);
+  border-bottom: 1px solid var(--tm-border);
+  padding: 0.75rem 1rem;
+}
+.tm-table tbody td {
+  padding: 0.65rem 1rem;
+  border-color: var(--tm-border);
+}
+
+/* ============================ Forms ============================ */
+.form-control, .form-select {
+  background-color: var(--tm-card-bg);
+  border-color: var(--tm-border);
+  color: var(--tm-text);
+}
+.form-control:focus, .form-select:focus {
+  background-color: var(--tm-card-bg);
+  color: var(--tm-text);
+  border-color: var(--tm-primary);
+  box-shadow: 0 0 0 0.2rem rgba(var(--tm-primary-rgb), 0.15);
+}
+.form-control::placeholder {
+  color: var(--tm-text-muted);
+}
+
+/* ============================ Form Card ============================ */
+.tm-form-card {
+  border: 1px dashed var(--tm-primary);
+  border-radius: var(--tm-radius) !important;
+}
+
+/* ============================ Packing List ============================ */
+.tm-check-btn {
+  text-decoration: none;
+  line-height: 1;
+}
+.tm-check-btn svg {
+  font-size: 1.2rem;
+}
+
+/* ============================ Hooks Info Cards ============================ */
+.tm-hook-card {
+  background-color: rgba(var(--tm-primary-rgb), 0.04);
+  border: 1px solid var(--tm-border);
+  border-radius: 10px;
+  padding: 1rem;
+  height: 100%;
+}
+.tm-hook-card h6 {
+  margin-bottom: 0.5rem;
+}
+.tm-hook-card ul {
+  line-height: 1.6;
+}
+
+/* ============================ Footer ============================ */
+.tm-footer {
+  border-top: 1px solid var(--tm-border);
+  background-color: var(--tm-card-bg);
+}
+
+/* ============================ Category Bars ============================ */
+.tm-category-bar {
+  padding: 0.5rem;
+  background-color: rgba(var(--tm-primary-rgb), 0.03);
+  border-radius: 8px;
+}
+
+/* ============================ Buttons ============================ */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: 10px;
+}
+
+/* ============================ Modal ============================ */
+.modal-content {
+  background-color: var(--tm-card-bg);
+  border: 1px solid var(--tm-border);
+  border-radius: var(--tm-radius);
+}
+.modal-header, .modal-footer {
+  border-color: var(--tm-border);
+}
+
+/* ============================ Badges ============================ */
+.badge {
+  font-weight: 600;
+}
+
+/* ============================ Responsive ============================ */
+@media (max-width: 768px) {
+  .tm-stat-value {
+    font-size: 1.2rem;
+  }
+  .tm-stat-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+  .tm-countdown-num {
+    font-size: 1.4rem;
+  }
+  .tm-brand-text {
+    font-size: 1rem;
+  }
+  .tm-brand-text small {
+    font-size: 0.6rem;
+  }
+  .tm-main {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .tm-countdown-grid {
+    gap: 0.5rem;
+  }
+  .tm-countdown-unit {
+    padding: 0.25rem;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--tm-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--tm-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tm-text-muted);
+}

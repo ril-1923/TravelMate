@@ -1,0 +1,196 @@
+import type { Trip, Expense, ItineraryItem, PackingItem, Destination, Theme } from '@/types';
+
+export const demoDestinations: Destination[] = [
+  {
+    id: 'd-paris',
+    name: 'Paris',
+    country: 'France',
+    description: 'The City of Light, home to the Eiffel Tower, world-class art, and exquisite cuisine.',
+    image: 'https://images.pexels.com/photos/17501700/pexels-photo-17501700.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    dailyCost: 180,
+    bestSeason: 'Apr – Jun',
+    attractions: ['Eiffel Tower', 'Louvre Museum', 'Notre-Dame', 'Montmartre'],
+  },
+  {
+    id: 'd-london',
+    name: 'London',
+    country: 'United Kingdom',
+    description: 'A historic metropolis blending royal heritage with modern culture and vibrant street life.',
+    image: 'https://images.pexels.com/photos/37544947/pexels-photo-37544947.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    dailyCost: 200,
+    bestSeason: 'May – Sep',
+    attractions: ['Tower Bridge', 'British Museum', 'Big Ben', 'Buckingham Palace'],
+  },
+  {
+    id: 'd-dubai',
+    name: 'Dubai',
+    country: 'United Arab Emirates',
+    description: 'A futuristic desert city of skyscrapers, luxury shopping, and golden dunes.',
+    image: 'https://images.pexels.com/photos/19664340/pexels-photo-19664340.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    dailyCost: 250,
+    bestSeason: 'Nov – Mar',
+    attractions: ['Burj Khalifa', 'Palm Jumeirah', 'Desert Safari', 'Dubai Mall'],
+  },
+  {
+    id: 'd-tokyo',
+    name: 'Tokyo',
+    country: 'Japan',
+    description: 'Where ancient temples meet neon-lit streets and the world\u2019s best sushi.',
+    image: 'https://images.pexels.com/photos/35125678/pexels-photo-35125678.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    dailyCost: 160,
+    bestSeason: 'Mar – May',
+    attractions: ['Shibuya Crossing', 'Senso-ji Temple', 'Mt. Fuji', 'Tsukiji Market'],
+  },
+  {
+    id: 'd-singapore',
+    name: 'Singapore',
+    country: 'Singapore',
+    description: 'A garden city of futuristic architecture, diverse food, and tropical greenery.',
+    image: 'https://images.pexels.com/photos/15480459/pexels-photo-15480459.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    dailyCost: 170,
+    bestSeason: 'Feb – Apr',
+    attractions: ['Marina Bay Sands', 'Gardens by the Bay', 'Sentosa Island', 'Chinatown'],
+  },
+  {
+    id: 'd-newyork',
+    name: 'New York',
+    country: 'United States',
+    description: 'The city that never sleeps — iconic skyline, Broadway, and endless energy.',
+    image: 'https://images.pexels.com/photos/8569166/pexels-photo-8569166.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    dailyCost: 260,
+    bestSeason: 'Apr – Jun',
+    attractions: ['Times Square', 'Statue of Liberty', 'Central Park', 'Broadway'],
+  },
+  {
+    id: 'd-rome',
+    name: 'Rome',
+    country: 'Italy',
+    description: 'The Eternal City of ancient ruins, Renaissance art, and incredible pasta.',
+    image: 'https://images.pexels.com/photos/14836534/pexels-photo-14836534.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    dailyCost: 150,
+    bestSeason: 'Apr – Jun',
+    attractions: ['Colosseum', 'Vatican City', 'Trevi Fountain', 'Pantheon'],
+  },
+  {
+    id: 'd-bali',
+    name: 'Bali',
+    country: 'Indonesia',
+    description: 'A tropical paradise of emerald rice terraces, temples, and surf-friendly beaches.',
+    image: 'https://images.pexels.com/photos/17716409/pexels-photo-17716409.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    dailyCost: 80,
+    bestSeason: 'Apr – Oct',
+    attractions: ['Uluwatu Temple', 'Tegallalang Rice Terrace', 'Ubud', 'Mount Batur'],
+  },
+  {
+    id: 'd-istanbul',
+    name: 'Istanbul',
+    country: 'Turkey',
+    description: 'Where East meets West — minarets, bazaars, and Bosphorus views.',
+    image: 'https://images.pexels.com/photos/8518777/pexels-photo-8518777.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    dailyCost: 90,
+    bestSeason: 'Apr – Jun',
+    attractions: ['Hagia Sophia', 'Blue Mosque', 'Grand Bazaar', 'Bosphorus Cruise'],
+  },
+  {
+    id: 'd-kualalumpur',
+    name: 'Kuala Lumpur',
+    country: 'Malaysia',
+    description: 'A vibrant capital of towering skyscrapers, street food, and multicultural charm.',
+    image: 'https://images.pexels.com/photos/9395978/pexels-photo-9395978.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    dailyCost: 70,
+    bestSeason: 'May – Jul',
+    attractions: ['Petronas Towers', 'Batu Caves', 'KL Tower', 'Central Market'],
+  },
+];
+
+function dateOffset(days: number): string {
+  const d = new Date();
+  d.setDate(d.getDate() + days);
+  const tz = d.getTimezoneOffset() * 60000;
+  return new Date(d.getTime() - tz).toISOString().split('T')[0];
+}
+
+export const demoTrips: Trip[] = [
+  {
+    id: 't-1',
+    name: 'Paris Getaway',
+    destination: 'Paris',
+    country: 'France',
+    startDate: dateOffset(24),
+    endDate: dateOffset(31),
+    travelers: 2,
+    budget: 3500,
+    travelType: 'Couple',
+    notes: 'Anniversary trip — book a Seine dinner cruise and Louvre skip-the-line tickets.',
+  },
+  {
+    id: 't-2',
+    name: 'Tokyo Tech Adventure',
+    destination: 'Tokyo',
+    country: 'Japan',
+    startDate: dateOffset(-5),
+    endDate: dateOffset(4),
+    travelers: 1,
+    budget: 4200,
+    travelType: 'Solo',
+    notes: 'Explore Akihabara, day trip to Mt. Fuji, and eat at Tsukiji.',
+  },
+  {
+    id: 't-3',
+    name: 'Bali Beach Retreat',
+    destination: 'Bali',
+    country: 'Indonesia',
+    startDate: dateOffset(-60),
+    endDate: dateOffset(-50),
+    travelers: 4,
+    budget: 2800,
+    travelType: 'Friends',
+    notes: 'Surfing in Uluwatu, yoga in Ubud, and a sunrise hike up Mount Batur.',
+  },
+];
+
+export const demoExpenses: Expense[] = [
+  { id: 'e-1', tripId: 't-1', name: 'Round-trip flights', category: 'Flights', amount: 980, date: dateOffset(10), notes: 'Direct from JFK' },
+  { id: 'e-2', tripId: 't-1', name: 'Boutique hotel (7 nights)', category: 'Hotel', amount: 1400, date: dateOffset(24), notes: 'Le Marais district' },
+  { id: 'e-3', tripId: 't-1', name: 'Seine dinner cruise', category: 'Activities', amount: 220, date: dateOffset(26), notes: 'Booked for anniversary' },
+  { id: 'e-4', tripId: 't-1', name: 'Café and bistro meals', category: 'Food', amount: 310, date: dateOffset(25), notes: '' },
+  { id: 'e-5', tripId: 't-2', name: 'Flights to Tokyo', category: 'Flights', amount: 1100, date: dateOffset(-20), notes: '' },
+  { id: 'e-6', tripId: 't-2', name: 'Capsule hotel', category: 'Hotel', amount: 680, date: dateOffset(-5), notes: 'Shinjuku' },
+  { id: 'e-7', tripId: 't-2', name: 'JR Pass', category: 'Transport', amount: 270, date: dateOffset(-4), notes: '7-day pass' },
+  { id: 'e-8', tripId: 't-2', name: 'Ramen and sushi', category: 'Food', amount: 180, date: dateOffset(-3), notes: '' },
+  { id: 'e-9', tripId: 't-3', name: 'Group flights', category: 'Flights', amount: 1200, date: dateOffset(-70), notes: '4 people' },
+  { id: 'e-10', tripId: 't-3', name: 'Villa rental', category: 'Hotel', amount: 600, date: dateOffset(-60), notes: 'Seminyak' },
+  { id: 'e-11', tripId: 't-3', name: 'Surf lessons', category: 'Activities', amount: 160, date: dateOffset(-58), notes: '' },
+  { id: 'e-12', tripId: 't-3', name: 'Beachfront dinners', category: 'Food', amount: 240, date: dateOffset(-55), notes: '' },
+];
+
+export const demoItinerary: ItineraryItem[] = [
+  { id: 'i-1', tripId: 't-1', date: dateOffset(24), time: '14:00', activity: 'Arrive & check-in', location: 'Le Marais', category: 'Hotel', estimatedCost: 0, notes: 'Early check-in requested', completed: false },
+  { id: 'i-2', tripId: 't-1', date: dateOffset(24), time: '19:00', activity: 'Welcome dinner', location: 'Bistro du Marais', category: 'Food', estimatedCost: 80, notes: 'Reservation under our name', completed: false },
+  { id: 'i-3', tripId: 't-1', date: dateOffset(25), time: '09:30', activity: 'Louvre Museum', location: 'Rue de Rivoli', category: 'Sightseeing', estimatedCost: 60, notes: 'Skip-the-line tickets', completed: false },
+  { id: 'i-4', tripId: 't-1', date: dateOffset(25), time: '15:00', activity: 'Seine walk & Eiffel Tower', location: 'Champ de Mars', category: 'Sightseeing', estimatedCost: 30, notes: 'Photos at golden hour', completed: false },
+  { id: 'i-5', tripId: 't-1', date: dateOffset(26), time: '20:00', activity: 'Seine dinner cruise', location: 'Port de la Bourdonnais', category: 'Food', estimatedCost: 220, notes: 'Anniversary night', completed: false },
+  { id: 'i-6', tripId: 't-2', date: dateOffset(-5), time: '15:00', activity: 'Arrive at Haneda', location: 'Haneda Airport', category: 'Transport', estimatedCost: 30, notes: 'Limousine bus to hotel', completed: true },
+  { id: 'i-7', tripId: 't-2', date: dateOffset(-4), time: '10:00', activity: 'Senso-ji Temple', location: 'Asakusa', category: 'Sightseeing', estimatedCost: 0, notes: 'Arrive early to beat crowds', completed: true },
+  { id: 'i-8', tripId: 't-2', date: dateOffset(-3), time: '18:00', activity: 'Shibuya & Akihabara', location: 'Shibuya', category: 'Shopping', estimatedCost: 150, notes: 'Electronics and anime stores', completed: false },
+];
+
+export const demoPacking: PackingItem[] = [
+  { id: 'p-1', tripId: 'all', name: 'Passport', category: 'Documents', packed: true },
+  { id: 'p-2', tripId: 'all', name: 'Visa', category: 'Documents', packed: false },
+  { id: 'p-3', tripId: 'all', name: 'Tickets', category: 'Documents', packed: true },
+  { id: 'p-4', tripId: 'all', name: 'Travel Insurance', category: 'Documents', packed: false },
+  { id: 'p-5', tripId: 'all', name: 'Shirts', category: 'Clothing', packed: true },
+  { id: 'p-6', tripId: 'all', name: 'Pants', category: 'Clothing', packed: true },
+  { id: 'p-7', tripId: 'all', name: 'Shoes', category: 'Clothing', packed: false },
+  { id: 'p-8', tripId: 'all', name: 'Jacket', category: 'Clothing', packed: false },
+  { id: 'p-9', tripId: 'all', name: 'Phone Charger', category: 'Electronics', packed: true },
+  { id: 'p-10', tripId: 'all', name: 'Power Bank', category: 'Electronics', packed: true },
+  { id: 'p-11', tripId: 'all', name: 'Laptop', category: 'Electronics', packed: false },
+  { id: 'p-12', tripId: 'all', name: 'Adapter', category: 'Electronics', packed: false },
+  { id: 'p-13', tripId: 'all', name: 'Toiletries', category: 'Personal', packed: true },
+  { id: 'p-14', tripId: 'all', name: 'Medicines', category: 'Personal', packed: false },
+  { id: 'p-15', tripId: 'all', name: 'Sunglasses', category: 'Personal', packed: true },
+];
+
+export const defaultTheme: Theme = 'light';
